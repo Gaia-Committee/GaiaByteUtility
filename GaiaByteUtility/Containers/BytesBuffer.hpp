@@ -14,14 +14,14 @@ namespace Gaia::ByteUtility
 	using BytesBuffer = std::vector<Byte>;
 
 	/// Cast BytesBuffer into BytesAddress
-	inline BytesAddress ToBytesAddress(BytesBuffer& buffer)
+	inline BytesAddress ToBytesAddress(const BytesBuffer& buffer)
 	{
-		return BytesAddress(buffer.data(), buffer.size());
+		return BytesAddress(const_cast<unsigned char*>(buffer.data()), buffer.size());
 	}
 
 	/// Cast BytesBuffer into BytesAddress
-	inline BytesAddress ToBytesAddress(std::string& buffer)
+	inline BytesAddress ToBytesAddress(const std::string& text)
 	{
-		return BytesAddress(reinterpret_cast<unsigned char*>(buffer.data()), buffer.size());
+		return BytesAddress(reinterpret_cast<unsigned char*>(const_cast<char*>(text.data())), text.size());
 	}
 }
