@@ -22,7 +22,7 @@ namespace Gaia::ByteUtility
 		void AddValue(ValueType value)
 		{
 			auto *data = reinterpret_cast<unsigned char*>(&value);
-			for (int index = sizeof(ValueType) - 1; index >= 0; --index)
+			for (int index = 0; index < sizeof (ValueType); ++index)
 			{
 				BytesData.push_back(data[index]);
 			}

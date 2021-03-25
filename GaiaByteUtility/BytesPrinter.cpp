@@ -10,7 +10,7 @@ namespace Gaia::ByteUtility
 	{
 		std::stringstream builder;
 
-		for (unsigned int index = 0; index < address.Length; ++index)
+		for (long long index = static_cast<long long>(address.Length) - 1; index >= 0; --index)
 		{
 			builder << " " << std::uppercase << std::setfill('0') << std::setw(2) << std::hex << (unsigned int)(address.Data[index]);
 		}
