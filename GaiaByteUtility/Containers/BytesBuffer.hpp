@@ -3,6 +3,7 @@
 #include "../BytesAddress.hpp"
 
 #include <vector>
+#include <string>
 
 namespace Gaia::ByteUtility
 {
@@ -16,5 +17,11 @@ namespace Gaia::ByteUtility
 	inline BytesAddress ToBytesAddress(BytesBuffer& buffer)
 	{
 		return BytesAddress(buffer.data(), buffer.size());
+	}
+
+	/// Cast BytesBuffer into BytesAddress
+	inline BytesAddress ToBytesAddress(std::string& buffer)
+	{
+		return BytesAddress(reinterpret_cast<unsigned char*>(buffer.data()), buffer.size());
 	}
 }
