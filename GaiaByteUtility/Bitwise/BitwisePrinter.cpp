@@ -12,9 +12,9 @@ namespace Gaia::ByteUtility::Bitwise
 		const auto& bits_data = ReadBitwiseByte(byte);
 
 		std::stringstream builder;
-		for (const auto& enable : bits_data)
+		for (int index = 7; index >= 0; --index)
 		{
-			builder << std::noboolalpha << enable;
+			builder << std::noboolalpha << bits_data[index];
 		}
 		return builder.str();
 	}
