@@ -41,7 +41,9 @@ namespace Gaia::ByteUtility
 			// which should be less or equal to the length of the source bytes.
 			if (index + sizeof (ValueType) > SourceBytes.Length)
 			{
-				throw Exceptions::ExceptionWrapper<std::out_of_range>();
+				throw Exceptions::ExceptionWrapper<std::out_of_range>(
+						"Access index (" + std::to_string(index) + ") out of length (" +
+						std::to_string(SourceBytes.Length) + ").");
 			}
 			return *reinterpret_cast<ValueType*>(SourceBytes.Data + index);
 		}
