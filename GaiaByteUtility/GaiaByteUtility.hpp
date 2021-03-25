@@ -8,6 +8,7 @@
 
 #include "Containers/BytesArray.hpp"
 #include "Containers/BytesBuffer.hpp"
+#include "StructureTranslator.hpp"
 
 #include "Bitwise/ByteBitwiseAccessor.hpp"
 #include "Bitwise/WordBitwiseAccessor.hpp"
