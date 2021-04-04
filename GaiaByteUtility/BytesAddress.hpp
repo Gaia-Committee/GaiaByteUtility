@@ -32,5 +32,12 @@ namespace Gaia::ByteUtility
 		{
 			return Data;
 		}
+
+		/// Get the BytesAddress of the memory of a variable.
+		template<typename ValueType>
+		BytesAddress FromValue(ValueType& value)
+        {
+		    return BytesAddress(value, sizeof (ValueType));
+        }
 	};
 }
