@@ -37,7 +37,7 @@ namespace Gaia::ByteUtility
 		template<typename ValueType>
 		static BytesAddress FromValue(ValueType& value)
         {
-		    return BytesAddress(value, sizeof (ValueType));
+		    return BytesAddress(&value, sizeof (ValueType));
         }
 	};
 }
