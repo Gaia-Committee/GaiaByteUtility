@@ -2,6 +2,7 @@
 
 #include "Byte.hpp"
 #include "BytesAddress.hpp"
+#include "ConstBytesAddress.hpp"
 #include "BytesAccessor.hpp"
 #include "BytesBuilder.hpp"
 #include "BytesPrinter.hpp"
