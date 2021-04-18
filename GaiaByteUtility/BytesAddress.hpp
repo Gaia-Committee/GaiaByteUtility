@@ -46,5 +46,8 @@ namespace Gaia::ByteUtility
         {
 		    return BytesAddress(reinterpret_cast<unsigned char*>(text.data()), text.size());
         }
+
+        /// Convert the data on this address into a string.
+        [[nodiscard]] std::string ToString() const;
 	};
 }
