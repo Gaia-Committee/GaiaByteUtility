@@ -2,6 +2,7 @@
 
 #include "Byte.hpp"
 #include <cstddef>
+#include <string>
 
 namespace Gaia::ByteUtility
 {
@@ -38,6 +39,12 @@ namespace Gaia::ByteUtility
 		static BytesAddress FromValue(ValueType& value)
         {
 		    return BytesAddress(&value, sizeof (ValueType));
+        }
+
+        /// Get the BytesAddress of the characters of a string.
+        static BytesAddress FromString(std::string& text)
+        {
+		    return BytesAddress(reinterpret_cast<unsigned char*>(text.data()), text.size());
         }
 	};
 }
