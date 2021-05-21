@@ -72,30 +72,14 @@ if(CMAKE_BUILD_TYPE STREQUAL Debug)
     target_compile_definitions(${TARGET_NAME} PRIVATE -DDEBUG)
 endif()
 
-#==============================
-# Dependencies
-#==============================
-
-# Boost
-find_package(Boost 1.71 REQUIRED COMPONENTS stacktrace_backtrace)
-target_compile_definitions(${TARGET_NAME} PRIVATE -DBOOST_STACKTRACE_LINK -DBOOST_STACKTRACE_USE_BACKTRACE)
-target_include_directories(${TARGET_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
-target_link_libraries(${TARGET_NAME} PUBLIC  ${Boost_LIBRARIES})
-
-# In Linux, 'Threads' need to explicitly linked.
-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    find_package(Threads)
-    target_link_libraries(${TARGET_NAME} PUBLIC ${CMAKE_THREAD_LIBS_INIT})
-endif()
-
 #===============================
 # Install Scripts
 #===============================
 
 # Install executable files and libraries to 'default_path/'.
 install(TARGETS ${TARGET_NAME}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/
+        LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 # Install header files to 'default_path/TARGET_NAME/'
 install(DIRECTORY "." DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${TARGET_NAME}/ FILES_MATCHING PATTERN "*.hpp")
